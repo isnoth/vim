@@ -15,21 +15,9 @@
 :set expandtab
 
 
-au BufNewFile,BufRead *.sdl,*.scc set filetype=sdl
 
-set filetype=python
-au BufNewFile,BufRead *.py,*.pyw setf python
-
-filetype plugin on
-set ofu=syntaxcomplete#Complete
-"autocmd FileType python
-set omnifunc=pythoncomplete#Complete
-"#autocmd FileType python runtime! pythoncomplete.vim
-
-
-
-
-
+set nocompatible               " be iMproved  
+filetype off                   " required!       /**  从这行开始，vimrc配置 **/  
 
 autocmd FileType python setlocal foldmethod=indent
 "默认展开所有代码
@@ -37,38 +25,41 @@ set foldlevel=99
 
 syntax on
 
-
-
-"bundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'Taglist.vim'
-Plugin 'bufexplorer'
-Plugin 'godlygeek/csapprox' "sceme
-Plugin 'colorselector' "secect color
-Plugin 'vCoolor' "secect color
-"Plugin 'vimwiki'
-"Plugin 'ShowMarks'
-"Plugin 'SearchComplete'
-
-Plugin 'vim-javascript'
-Plugin 'https://github.com/briancollins/vim-jst'    "ejs syntax
-Plugin 'https://github.com/nathanaelkane/vim-indent-guides.git' "indent guides
-Plugin 'kshenoy/vim-signature'
-Plugin 'https://github.com/scrooloose/nerdtree'
-Plugin 'ctrlp.vim'
-"Plugin 'https://github.com/kshenoy/vim-signature.git' "show marks
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'majutsushi/tagbar'
-
-"Plugin 'winmanger'
-call vundle#end()            " required
-filetype plugin indent on    " required
+  
+set rtp+=~/.vim/bundle/vundle/  
+call vundle#rc()  
+  
+" let Vundle manage Vundle  
+" required!   
+Bundle 'gmarik/vundle'  
+  
+" My Bundles here:  /* 插件配置格式 */  
+"     
+" original repos on github （Github网站上非vim-scripts仓库的插件，按下面格式填写）  
+Bundle 'tpope/vim-fugitive'  
+Bundle 'Lokaltog/vim-easymotion'  
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
+Bundle 'tpope/vim-rails.git'  
+" vim-scripts repos  （vim-scripts仓库里的，按下面格式填写）  
+Bundle 'L9'  
+Bundle 'FuzzyFinder'  
+" non github repos   (非上面两种情况的，按下面格式填写)  
+Bundle 'SearchComplete'
+Bundle 'git://git.wincent.com/command-t.git'  
+Bundle 'ctrlp.vim'
+Bundle 'vim-javascript'
+" ...   
+  
+filetype plugin indent on     " required!   /** vimrc文件配置结束 **/  
+"                                           /** vundle命令 **/  
+" Brief help  
+" :BundleList          - list configured bundles  
+" :BundleInstall(!)    - install(update) bundles  
+" :BundleSearch(!) foo - search(or refresh cache first) for foo   
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles  
+"     
+" see :h vundle for more details or wiki for FAQ   
+" NOTE: comments after Bundle command are not allowed..  
 
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 let g:vim_markdown_folding_disabled=1
@@ -164,5 +155,4 @@ let g:ctrlp_custom_ignore="node_modules"     "ctrlp ignore files
 
 "test plugin
 nmap <F11> :call TestGrep() <CR>
-
 
